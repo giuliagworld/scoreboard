@@ -20642,8 +20642,6 @@ var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-re
 
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
 
-__webpack_require__(/*! ../scss/styles.scss */ "./src/scss/styles.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Scoreboard = (0, _createReactClass.default)({
@@ -20672,8 +20670,6 @@ exports.default = _default;
 var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 
 var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
-
-__webpack_require__(/*! ./scss/styles.scss */ "./src/scss/styles.scss");
 
 var _Scoreboard = _interopRequireDefault(__webpack_require__(/*! ./components/Scoreboard */ "./src/components/Scoreboard.js"));
 

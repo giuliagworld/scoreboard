@@ -1,5 +1,5 @@
 {
-  "name": "webpack-test",
+  "name": "scoreboard",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/giuliagworld/webpack-test.git"
+    "url": "git+https://github.com/giuliagworld/scoreboard.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "giulia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/giuliagworld/webpack-test/issues"
+    "url": "https://github.com/giuliagworld/scoreboard/issues"
   },
-  "homepage": "https://github.com/giuliagworld/webpack-test#readme",
+  "homepage": "https://giuliagworld.github.io/scoreboard/",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.44",
