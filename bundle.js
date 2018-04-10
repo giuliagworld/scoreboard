@@ -20642,6 +20642,10 @@ var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-re
 
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
 
+var _header = _interopRequireDefault(__webpack_require__(/*! ./_header */ "./src/components/_header.js"));
+
+var _player = _interopRequireDefault(__webpack_require__(/*! ./_player */ "./src/components/_player.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Scoreboard = (0, _createReactClass.default)({
@@ -20649,10 +20653,148 @@ var Scoreboard = (0, _createReactClass.default)({
   render: function render() {
     return _react.default.createElement("div", {
       className: "scoreboard"
-    }, "Finally!");
+    }, _react.default.createElement(_header.default, null), _react.default.createElement("div", {
+      className: "players"
+    }, _react.default.createElement(_player.default, {
+      name: "Giulia",
+      score: 45
+    }), _react.default.createElement(_player.default, {
+      name: "Gaby",
+      score: 75
+    })));
   }
 });
 var _default = Scoreboard;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./src/components/_counter.js":
+/*!************************************!*\
+  !*** ./src/components/_counter.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Counter(props) {
+  return _react.default.createElement("div", {
+    className: "counter"
+  }, _react.default.createElement("button", {
+    className: "counter-action decrement"
+  }, " - "), _react.default.createElement("div", {
+    className: "counter-score"
+  }, " ", props.score, " "), _react.default.createElement("button", {
+    className: "counter-action increment"
+  }, " + "));
+}
+
+Counter.propTypes = {
+  score: _propTypes.default.number.isRequired
+};
+var _default = Counter;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./src/components/_header.js":
+/*!***********************************!*\
+  !*** ./src/components/_header.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Header(props) {
+  return _react.default.createElement("div", {
+    className: "header"
+  }, _react.default.createElement("h1", null, props.title));
+}
+
+Header.defaultProps = {
+  title: "Scoreboard" // optional becaue we set a default value
+
+};
+Header.propTypes = {
+  title: _propTypes.default.string
+};
+var _default = Header;
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./src/components/_player.js":
+/*!***********************************!*\
+  !*** ./src/components/_player.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+var _counter = _interopRequireDefault(__webpack_require__(/*! ./_counter */ "./src/components/_counter.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Player(props) {
+  return _react.default.createElement("div", {
+    className: "player"
+  }, _react.default.createElement("div", {
+    className: "player-name"
+  }, props.name), _react.default.createElement("div", {
+    className: "player-score"
+  }, _react.default.createElement(_counter.default, {
+    score: props.score
+  })));
+}
+
+Player.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  score: _propTypes.default.number.isRequired
+};
+var _default = Player;
 exports.default = _default;
 
 /***/ }),

@@ -1,5 +1,19 @@
 .scoreboard {
   font-weight: 700;
-  color: green; }
+  color: #464646; }
+
+.players .player-name {
+  display: inline-block; }
+
+.players .player-score {
+  display: inline-block; }
+
+.counter {
+  padding-left: 50px; }
+  .counter .counter-action {
+    display: inline-block; }
+  .counter .counter-score {
+    display: inline-block;
+    padding: 0 10px; }
 
 /*# sourceMappingURL=bundle.css.map*/
