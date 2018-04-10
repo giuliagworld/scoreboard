@@ -1,4 +1,26 @@
+@import '_variables';
+
 .scoreboard {
   font-weight: 700;
-  color: green;
+  color: $black;
+}
+
+.players {
+  .player-name {
+    display: inline-block;
+  }
+  .player-score {
+    display: inline-block;
+  }
+}
+
+.counter {
+  padding-left: 50px;
+  .counter-action {
+    display: inline-block;
+  }
+  .counter-score {
+    display: inline-block;
+    padding: 0 10px;
+  }
 }
