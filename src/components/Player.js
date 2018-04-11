@@ -2,7 +2,7 @@ import React from 'react';
 import createReactClass from "create-react-class";
 import PropTypes from 'prop-types';
 
-import Counter from './_counter';
+import Counter from './Counter';
 
 function Player(props) {
   return (
@@ -19,7 +19,7 @@ function Player(props) {
 
 Player.propTypes = {
   name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired
+  score: PropTypes.number.isRequired,
 }
 
 export default Player;

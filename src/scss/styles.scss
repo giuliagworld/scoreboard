@@ -1,26 +1,50 @@
 @import '_variables';
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .scoreboard {
+  text-align: center;
   font-weight: 700;
-  color: $black;
 }
 
 .players {
-  .player-name {
-    display: inline-block;
-  }
-  .player-score {
-    display: inline-block;
+  background-color: lightblue;
+  font-size: 20px;
+  .player {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    .player-name {
+      padding-left: 10px;
+      text-align: left;
+    }
+    .player-score {
+    }
   }
 }
 
 .counter {
-  padding-left: 50px;
+    display: flex;
+    align-items: center;
   .counter-action {
-    display: inline-block;
+    font-size: 25px;
+    background-color: $black;
+    color: $white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &.decrement {
+      background-color: red;
+    }
+    &.increment {
+      background-color: green;
+    }
   }
   .counter-score {
-    display: inline-block;
-    padding: 0 10px;
+    padding-right: 25px;
   }
 }

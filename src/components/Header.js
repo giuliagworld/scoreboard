@@ -10,10 +10,6 @@ function Header(props) {
   );
 }
 
-Header.defaultProps = {
-  title: "Scoreboard"
-}
-
 // optional becaue we set a default value
 Header.propTypes = {
   title: PropTypes.string
