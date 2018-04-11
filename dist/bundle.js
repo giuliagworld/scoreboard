@@ -20647,9 +20647,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Counter(props) {
   return _react.default.createElement("div", {
     className: "counter"
-  }, _react.default.createElement("div", {
-    className: "counter-score"
-  }, " ", props.score, " "), _react.default.createElement("button", {
+  }, _react.default.createElement("button", {
     className: "counter-action decrement"
   }, " - "), _react.default.createElement("button", {
     className: "counter-action increment"
@@ -20734,9 +20732,11 @@ function Player(props) {
     className: "player-name"
   }, props.name), _react.default.createElement("div", {
     className: "player-score"
-  }, _react.default.createElement(_Counter.default, {
+  }, _react.default.createElement("div", {
+    className: "counter-score"
+  }, " ", props.score, " ")), _react.default.createElement(_Counter.default, {
     score: props.score
-  })));
+  }));
 }
 
 Player.propTypes = {

@@ -11,8 +11,9 @@ function Player(props) {
         {props.name}
       </div>
       <div className="player-score">
-        <Counter score={props.score} />
+        <div className="counter-score"> {props.score} </div>
       </div>
+      <Counter score={props.score} />
     </div>
   );
 }
