@@ -1,19 +1,38 @@
+body {
+  margin: 0;
+  padding: 0; }
+
 .scoreboard {
-  font-weight: 700;
-  color: #464646; }
+  text-align: center;
+  font-weight: 700; }
 
-.players .player-name {
-  display: inline-block; }
-
-.players .player-score {
-  display: inline-block; }
+.players {
+  background-color: lightblue;
+  font-size: 20px; }
+  .players .player {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
+    .players .player .player-name {
+      padding-left: 10px;
+      text-align: left; }
 
 .counter {
-  padding-left: 50px; }
+  display: flex;
+  align-items: center; }
   .counter .counter-action {
-    display: inline-block; }
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer; }
+    .counter .counter-action.decrement {
+      background-color: red; }
+    .counter .counter-action.increment {
+      background-color: green; }
   .counter .counter-score {
-    display: inline-block;
-    padding: 0 10px; }
+    padding-right: 25px; }
 
 /*# sourceMappingURL=bundle.css.map*/
