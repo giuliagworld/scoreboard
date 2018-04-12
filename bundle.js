@@ -20644,19 +20644,43 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Counter(props) {
-  return _react.default.createElement("div", {
-    className: "counter"
-  }, _react.default.createElement("button", {
-    className: "counter-action decrement"
-  }, " - "), _react.default.createElement("button", {
-    className: "counter-action increment"
-  }, " + "));
-}
-
-Counter.propTypes = {
-  score: _propTypes.default.number.isRequired
-};
+var Counter = (0, _createReactClass.default)({
+  displayName: "Counter",
+  // getInitialState is a React function to render the state
+  // change {this.props.score} to {this.state.score} because we are no longer taking the value from props but from state
+  getInitialState: function getInitialState() {
+    return {
+      score: 0
+    };
+  },
+  incrementScore: function incrementScore() {
+    // setState is a React function to change the state
+    this.setState({
+      score: this.state.score + 1
+    });
+  },
+  decrementScore: function decrementScore() {
+    // setState is a React function to change the state
+    this.setState({
+      score: this.state.score - 1
+    });
+  },
+  // onClick should call the object decrementScore and not the function decrementScore()
+  // if it calls the function decrementScore() it will only run once, not everytime we click the button
+  render: function render() {
+    return _react.default.createElement("div", {
+      className: "counter"
+    }, _react.default.createElement("div", {
+      className: "counter-score"
+    }, " ", this.state.score, " "), _react.default.createElement("button", {
+      className: "counter-action decrement",
+      onClick: this.decrementScore
+    }, " - "), _react.default.createElement("button", {
+      className: "counter-action increment",
+      onClick: this.incrementScore
+    }, " + "));
+  }
+});
 var _default = Counter;
 exports.default = _default;
 
@@ -20685,16 +20709,17 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Header(props) {
-  return _react.default.createElement("div", {
-    className: "header"
-  }, _react.default.createElement("h1", null, props.title));
-} // optional becaue we set a default value
-
-
-Header.propTypes = {
-  title: _propTypes.default.string
-};
+var Header = (0, _createReactClass.default)({
+  displayName: "Header",
+  propTypes: {
+    title: _propTypes.default.string
+  },
+  render: function render() {
+    return _react.default.createElement("div", {
+      className: "header"
+    }, _react.default.createElement("h1", null, this.props.title));
+  }
+});
 var _default = Header;
 exports.default = _default;
 
@@ -20725,24 +20750,21 @@ var _Counter = _interopRequireDefault(__webpack_require__(/*! ./Counter */ "./sr
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Player(props) {
-  return _react.default.createElement("div", {
-    className: "player"
-  }, _react.default.createElement("div", {
-    className: "player-name"
-  }, props.name), _react.default.createElement("div", {
-    className: "player-score"
-  }, _react.default.createElement("div", {
-    className: "counter-score"
-  }, " ", props.score, " ")), _react.default.createElement(_Counter.default, {
-    score: props.score
-  }));
-}
-
-Player.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  score: _propTypes.default.number.isRequired
-};
+var Player = (0, _createReactClass.default)({
+  displayName: "Player",
+  propTypes: {
+    name: _propTypes.default.string.isRequired
+  },
+  render: function render() {
+    return _react.default.createElement("div", {
+      className: "player"
+    }, _react.default.createElement("div", {
+      className: "player-name"
+    }, this.props.name), _react.default.createElement("div", {
+      className: "player-score"
+    }, _react.default.createElement(_Counter.default, null)));
+  }
+});
 var _default = Player;
 exports.default = _default;
 
@@ -20777,6 +20799,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Scoreboard = (0, _createReactClass.default)({
   displayName: "Scoreboard",
+  propTypes: {
+    title: _propTypes.default.string,
+    players: _propTypes.default.arrayOf(_propTypes.default.shape({
+      name: _propTypes.default.string.isRequired,
+      id: _propTypes.default.number.isRequired
+    }))
+  },
   render: function render() {
     return _react.default.createElement("div", {
       className: "scoreboard"
@@ -20787,23 +20816,11 @@ var Scoreboard = (0, _createReactClass.default)({
     }, this.props.players.map(function (player) {
       return _react.default.createElement(_Player.default, {
         name: player.name,
-        score: player.score,
         key: player.id
       });
     })));
   }
 });
-Scoreboard.propTypes = {
-  title: _propTypes.default.string,
-  players: _propTypes.default.arrayOf(_propTypes.default.shape({
-    name: _propTypes.default.string.isRequired,
-    score: _propTypes.default.number.isRequired,
-    id: _propTypes.default.number.isRequired
-  }))
-};
-Scoreboard.defaultProps = {
-  title: "Scoreboard"
-};
 var _default = Scoreboard;
 exports.default = _default;
 
@@ -20829,19 +20846,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PLAYERS = [{
   name: "Player 1",
-  score: 31,
   id: 1
 }, {
   name: "Player 2",
-  score: 35,
   id: 2
 }, {
   name: "Player 3",
-  score: 42,
   id: 3
 }];
 
 _reactDom.default.render(_react.default.createElement(_Scoreboard.default, {
+  title: "Scoreboard",
   players: PLAYERS
 }), document.getElementById('app'));
 
