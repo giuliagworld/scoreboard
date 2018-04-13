@@ -94,12 +94,12 @@ body {
           width: calc(40% - 25px);
           margin-top: 0;
           margin-left: 5px; } }
-  .add-player p {
+  .add-player .info {
     padding: 0 20px;
     text-align: center;
     font-size: 16px;
     color: white; }
-    .add-player p span {
+    .add-player .info .remove-player {
       color: red; }
 
 /*# sourceMappingURL=bundle.css.map*/

@@ -20686,7 +20686,9 @@ var AddPlayer = (0, _createReactClass.default)({
     }), _react.default.createElement("button", {
       type: "submit",
       className: "btn"
-    }, "Add Player")), _react.default.createElement("p", null, "To remove any of the players just click on the ", _react.default.createElement("span", {
+    }, "Add Player")), _react.default.createElement("p", {
+      className: "info"
+    }, "To remove any of the players just click on the ", _react.default.createElement("span", {
       className: "remove-player"
     }, "x"), " next to the player you want to remove."));
   }
