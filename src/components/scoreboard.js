@@ -40,13 +40,18 @@ const Scoreboard = createReactClass({
   },
   // add player to state using the name argument that refers to the name coming from onSubmit
   onPlayerAdd: function(name) {
-    this.state.players.push({
-      name: name,
-      score: 0,
-      id: nextId
-    })
-    this.setState(this.state)
-    nextId += 1
+    if (name) {
+      this.state.players.push({
+        name: name,
+        score: 0,
+        id: nextId
+      })
+      this.setState(this.state)
+      nextId += 1
+    }
+    else {
+      alert('Hey! Enter your name!');
+    }
   },
   onRemovePlayer: function(index) {
     this.state.players.splice(index, 1)
