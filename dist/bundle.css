@@ -20,6 +20,11 @@ body {
       .players .player {
         width: 500px;
         margin: 0 auto; } }
+    .players .player .remove-player {
+      padding-right: 10px;
+      font-size: 16px;
+      color: red;
+      cursor: pointer; }
     .players .player .player-name {
       padding-left: 10px;
       text-align: left; }

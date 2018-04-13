@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Player from './Player';
+import AddPlayer from './AddPlayer';
+
+let nextId = 4;
 
 const Scoreboard = createReactClass({
   propTypes: {
@@ -35,6 +38,20 @@ const Scoreboard = createReactClass({
     // setState is a React function to change the state
     this.setState(this.state);
   },
+  // add player to state using the name argument that refers to the name coming from onSubmit
+  onPlayerAdd: function(name) {
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: nextId
+    })
+    this.setState(this.state)
+    nextId += 1
+  },
+  onRemovePlayer: function(index) {
+    this.state.players.splice(index, 1)
+    this.setState(this.state)
+  },
   render: function() {
     return (
       <div className="scoreboard">
@@ -47,12 +64,14 @@ const Scoreboard = createReactClass({
                   // So what we need to do is for our function that we passed to the iterator, we actually do need to call .bind(this).
                   // When we called .bind(this) on our anonymous function, it will make the "this" within our function applied to the same "this" that it would be outside.
                   onScoreChange={function(delta) {this.onScoreChange(index, delta)}.bind(this)}
+                  onRemove={function() {this.onRemovePlayer(index)}.bind(this)}
                   name={player.name}
                   score={player.score}
                   key={player.id} />
               );
             }.bind(this))}
         </div>
+        <AddPlayer onAdd={this.onPlayerAdd} />
       </div>
     )
   }

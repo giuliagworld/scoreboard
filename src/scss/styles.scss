@@ -25,6 +25,12 @@ body {
       width: 500px;
       margin: 0 auto;
     }
+    .remove-player {
+      padding-right: 10px;
+      font-size: 16px;
+      color: $red;
+      cursor: pointer;
+    }
     .player-name {
       padding-left: 10px;
       text-align: left;

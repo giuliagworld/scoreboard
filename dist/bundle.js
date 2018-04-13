@@ -20621,6 +20621,76 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/components/AddPlayer.js":
+/*!*************************************!*\
+  !*** ./src/components/AddPlayer.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createReactClass = _interopRequireDefault(__webpack_require__(/*! create-react-class */ "./node_modules/create-react-class/index.js"));
+
+var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AddPlayer = (0, _createReactClass.default)({
+  displayName: "AddPlayer",
+  propTypes: {
+    onAdd: _propTypes.default.func.isRequired
+  },
+  getInitialState: function getInitialState() {
+    return {
+      name: ''
+    };
+  },
+  onNameChange: function onNameChange(e) {
+    // update the state every time a letter is typed
+    this.setState({
+      name: e.target.value
+    });
+  },
+  onSubmit: function onSubmit(e) {
+    // prevent the form from submitting
+    e.preventDefault(); // passing the name up the DOM tree
+    // onAdd take a name to pass up
+
+    this.props.onAdd(this.state.name); // clear that last name from the state
+
+    this.setState({
+      name: ''
+    });
+  },
+  render: function render() {
+    return _react.default.createElement("div", {
+      className: "add-player-form"
+    }, _react.default.createElement("form", {
+      onSubmit: this.onSubmit
+    }, _react.default.createElement("input", {
+      type: "text",
+      value: this.state.name,
+      onChange: this.onNameChange
+    }), _react.default.createElement("input", {
+      type: "submit",
+      value: "Add Player"
+    })));
+  }
+});
+var _default = AddPlayer;
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./src/components/Counter.js":
 /*!***********************************!*\
   !*** ./src/components/Counter.js ***!
@@ -20738,7 +20808,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 Player.propTypes = {
   name: _propTypes.default.string.isRequired,
   score: _propTypes.default.number.isRequired,
-  onScoreChange: _propTypes.default.func.isRequired
+  onScoreChange: _propTypes.default.func.isRequired,
+  onRemove: _propTypes.default.func.isRequired
 };
 
 function Player(props) {
@@ -20746,7 +20817,10 @@ function Player(props) {
     className: "player"
   }, _react.default.createElement("div", {
     className: "player-name"
-  }, props.name), _react.default.createElement("div", {
+  }, _react.default.createElement("a", {
+    className: "remove-player",
+    onClick: props.onRemove
+  }, "X"), props.name), _react.default.createElement("div", {
     className: "player-score"
   }, _react.default.createElement(_Counter.default, {
     score: props.score,
@@ -20784,8 +20858,11 @@ var _Header = _interopRequireDefault(__webpack_require__(/*! ./Header */ "./src/
 
 var _Player = _interopRequireDefault(__webpack_require__(/*! ./Player */ "./src/components/Player.js"));
 
+var _AddPlayer = _interopRequireDefault(__webpack_require__(/*! ./AddPlayer */ "./src/components/AddPlayer.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var nextId = 4;
 var Scoreboard = (0, _createReactClass.default)({
   displayName: "Scoreboard",
   propTypes: {
@@ -20817,6 +20894,20 @@ var Scoreboard = (0, _createReactClass.default)({
 
     this.setState(this.state);
   },
+  // add player to state using the name argument that refers to the name coming from onSubmit
+  onPlayerAdd: function onPlayerAdd(name) {
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: nextId
+    });
+    this.setState(this.state);
+    nextId += 1;
+  },
+  onRemovePlayer: function onRemovePlayer(index) {
+    this.state.players.splice(index, 1);
+    this.setState(this.state);
+  },
   render: function render() {
     return _react.default.createElement("div", {
       className: "scoreboard"
@@ -20832,11 +20923,16 @@ var Scoreboard = (0, _createReactClass.default)({
         onScoreChange: function (delta) {
           this.onScoreChange(index, delta);
         }.bind(this),
+        onRemove: function () {
+          this.onRemovePlayer(index);
+        }.bind(this),
         name: player.name,
         score: player.score,
         key: player.id
       });
-    }.bind(this))));
+    }.bind(this))), _react.default.createElement(_AddPlayer.default, {
+      onAdd: this.onPlayerAdd
+    }));
   }
 });
 var _default = Scoreboard;
