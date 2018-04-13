@@ -20680,14 +20680,15 @@ var AddPlayer = (0, _createReactClass.default)({
     }, _react.default.createElement("input", {
       type: "text",
       className: "input",
+      placeholder: "Player Name",
       value: this.state.name,
       onChange: this.onNameChange
     }), _react.default.createElement("button", {
       type: "submit",
       className: "btn"
-    }, "Add Player")), _react.default.createElement("p", null, "Click on ", _react.default.createElement("span", {
+    }, "Add Player")), _react.default.createElement("p", null, "To remove any of the players just click on the ", _react.default.createElement("span", {
       className: "remove-player"
-    }, "x"), " to remove that player"));
+    }, "x"), " next to the player you want to remove."));
   }
 });
 var _default = AddPlayer;
@@ -20868,7 +20869,7 @@ var _AddPlayer = _interopRequireDefault(__webpack_require__(/*! ./AddPlayer */ "
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var nextId = 2;
+var nextId = 1;
 var Scoreboard = (0, _createReactClass.default)({
   displayName: "Scoreboard",
   propTypes: {
@@ -20968,11 +20969,7 @@ var _Scoreboard = _interopRequireDefault(__webpack_require__(/*! ./components/Sc
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PLAYERS = [{
-  name: "Giulia",
-  score: 0,
-  id: 1
-}];
+var PLAYERS = [];
 
 _reactDom.default.render(_react.default.createElement(_Scoreboard.default, {
   initialPlayers: PLAYERS
