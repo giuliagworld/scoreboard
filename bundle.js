@@ -20644,43 +20644,29 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Counter = (0, _createReactClass.default)({
-  displayName: "Counter",
-  // getInitialState is a React function to render the state
-  // change {this.props.score} to {this.state.score} because we are no longer taking the value from props but from state
-  getInitialState: function getInitialState() {
-    return {
-      score: 0
-    };
-  },
-  incrementScore: function incrementScore() {
-    // setState is a React function to change the state
-    this.setState({
-      score: this.state.score + 1
-    });
-  },
-  decrementScore: function decrementScore() {
-    // setState is a React function to change the state
-    this.setState({
-      score: this.state.score - 1
-    });
-  },
-  // onClick should call the object decrementScore and not the function decrementScore()
-  // if it calls the function decrementScore() it will only run once, not everytime we click the button
-  render: function render() {
-    return _react.default.createElement("div", {
-      className: "counter"
-    }, _react.default.createElement("div", {
-      className: "counter-score"
-    }, " ", this.state.score, " "), _react.default.createElement("button", {
-      className: "counter-action decrement",
-      onClick: this.decrementScore
-    }, " - "), _react.default.createElement("button", {
-      className: "counter-action increment",
-      onClick: this.incrementScore
-    }, " + "));
-  }
-});
+Counter.propTypes = {
+  score: _propTypes.default.number.isRequired,
+  onChange: _propTypes.default.func.isRequired
+};
+
+function Counter(props) {
+  return _react.default.createElement("div", {
+    className: "counter"
+  }, _react.default.createElement("div", {
+    className: "counter-score"
+  }, " ", props.score, " "), _react.default.createElement("button", {
+    className: "counter-action decrement",
+    onClick: function onClick() {
+      props.onChange(-1);
+    }
+  }, " - "), _react.default.createElement("button", {
+    className: "counter-action increment",
+    onClick: function onClick() {
+      props.onChange(+1);
+    }
+  }, " + "));
+}
+
 var _default = Counter;
 exports.default = _default;
 
@@ -20709,17 +20695,16 @@ var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ ".
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = (0, _createReactClass.default)({
-  displayName: "Header",
-  propTypes: {
-    title: _propTypes.default.string
-  },
-  render: function render() {
-    return _react.default.createElement("div", {
-      className: "header"
-    }, _react.default.createElement("h1", null, this.props.title));
-  }
-});
+Header.propTypes = {
+  title: _propTypes.default.string
+};
+
+function Header(props) {
+  return _react.default.createElement("div", {
+    className: "header"
+  }, _react.default.createElement("h1", null, props.title));
+}
+
 var _default = Header;
 exports.default = _default;
 
@@ -20750,21 +20735,25 @@ var _Counter = _interopRequireDefault(__webpack_require__(/*! ./Counter */ "./sr
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Player = (0, _createReactClass.default)({
-  displayName: "Player",
-  propTypes: {
-    name: _propTypes.default.string.isRequired
-  },
-  render: function render() {
-    return _react.default.createElement("div", {
-      className: "player"
-    }, _react.default.createElement("div", {
-      className: "player-name"
-    }, this.props.name), _react.default.createElement("div", {
-      className: "player-score"
-    }, _react.default.createElement(_Counter.default, null)));
-  }
-});
+Player.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  score: _propTypes.default.number.isRequired,
+  onScoreChange: _propTypes.default.func.isRequired
+};
+
+function Player(props) {
+  return _react.default.createElement("div", {
+    className: "player"
+  }, _react.default.createElement("div", {
+    className: "player-name"
+  }, props.name), _react.default.createElement("div", {
+    className: "player-score"
+  }, _react.default.createElement(_Counter.default, {
+    score: props.score,
+    onChange: props.onScoreChange
+  })));
+}
+
 var _default = Player;
 exports.default = _default;
 
@@ -20801,10 +20790,32 @@ var Scoreboard = (0, _createReactClass.default)({
   displayName: "Scoreboard",
   propTypes: {
     title: _propTypes.default.string,
-    players: _propTypes.default.arrayOf(_propTypes.default.shape({
+    initialPlayers: _propTypes.default.arrayOf(_propTypes.default.shape({
       name: _propTypes.default.string.isRequired,
+      score: _propTypes.default.number.isRequired,
       id: _propTypes.default.number.isRequired
-    }))
+    })).isRequired
+  },
+  // getDefaultProps is a React function
+  getDefaultProps: function getDefaultProps() {
+    return {
+      title: 'Scoreboard'
+    };
+  },
+  // getInitialState is a React function to render the state
+  // change {this.props.score} to {this.state.score} because we are no longer taking the value from props but from state
+  getInitialState: function getInitialState() {
+    return {
+      players: this.props.initialPlayers
+    };
+  },
+  // passing the index of the PLAYERS array and the delta is the number by which we should change the score
+  onScoreChange: function onScoreChange(index, delta) {
+    this.state.players[index].score += delta; // above not enough
+    // below indicates to react that the state has change and it should be re-rendered
+    // setState is a React function to change the state
+
+    this.setState(this.state);
   },
   render: function render() {
     return _react.default.createElement("div", {
@@ -20813,12 +20824,19 @@ var Scoreboard = (0, _createReactClass.default)({
       title: this.props.title
     }), _react.default.createElement("div", {
       className: "players"
-    }, this.props.players.map(function (player) {
-      return _react.default.createElement(_Player.default, {
+    }, this.state.players.map(function (player, index) {
+      return _react.default.createElement(_Player.default // We are actually inside of a function inside of our map iterator, which means within this function, "this" doesn't point to our instance.
+      // So what we need to do is for our function that we passed to the iterator, we actually do need to call .bind(this).
+      // When we called .bind(this) on our anonymous function, it will make the "this" within our function applied to the same "this" that it would be outside.
+      , {
+        onScoreChange: function (delta) {
+          this.onScoreChange(index, delta);
+        }.bind(this),
         name: player.name,
+        score: player.score,
         key: player.id
       });
-    })));
+    }.bind(this))));
   }
 });
 var _default = Scoreboard;
@@ -20846,18 +20864,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PLAYERS = [{
   name: "Player 1",
+  score: 2,
   id: 1
 }, {
   name: "Player 2",
+  score: 4,
   id: 2
 }, {
   name: "Player 3",
+  score: 6,
   id: 3
 }];
 
 _reactDom.default.render(_react.default.createElement(_Scoreboard.default, {
-  title: "Scoreboard",
-  players: PLAYERS
+  initialPlayers: PLAYERS
 }), document.getElementById('app'));
 
 /***/ }),
