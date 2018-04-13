@@ -32,10 +32,10 @@ const AddPlayer = createReactClass({
     return (
       <div className="add-player">
         <form className="form" onSubmit={this.onSubmit}>
-          <input type="text" className="input" value={this.state.name} onChange={this.onNameChange} />
+          <input type="text" className="input" placeholder="Player Name" value={this.state.name} onChange={this.onNameChange} />
           <button type="submit" className="btn">Add Player</button>
         </form>
-        <p>Click on <span className="remove-player">x</span> to remove that player</p>
+        <p>To remove any of the players just click on the <span className="remove-player">x</span> next to the player you want to remove.</p>
       </div>
     )
   }
