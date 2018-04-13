@@ -35,7 +35,7 @@ const AddPlayer = createReactClass({
           <input type="text" className="input" placeholder="Player Name" value={this.state.name} onChange={this.onNameChange} />
           <button type="submit" className="btn">Add Player</button>
         </form>
-        <p>To remove any of the players just click on the <span className="remove-player">x</span> next to the player you want to remove.</p>
+        <p className="info">To remove any of the players just click on the <span className="remove-player">x</span> next to the player you want to remove.</p>
       </div>
     )
   }

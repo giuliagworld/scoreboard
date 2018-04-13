@@ -115,12 +115,12 @@ body {
       }
     }
   }
-  p {
+  .info {
     padding: 0 20px;
     text-align: center;
     font-size: 16px;
     color: $white;
-    span {
+    .remove-player {
       color: $red;
     }
   }
