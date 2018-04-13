@@ -20862,7 +20862,7 @@ var _AddPlayer = _interopRequireDefault(__webpack_require__(/*! ./AddPlayer */ "
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var nextId = 4;
+var nextId = 2;
 var Scoreboard = (0, _createReactClass.default)({
   displayName: "Scoreboard",
   propTypes: {
@@ -20959,17 +20959,9 @@ var _Scoreboard = _interopRequireDefault(__webpack_require__(/*! ./components/Sc
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PLAYERS = [{
-  name: "Player 1",
-  score: 2,
+  name: "Giulia",
+  score: 0,
   id: 1
-}, {
-  name: "Player 2",
-  score: 4,
-  id: 2
-}, {
-  name: "Player 3",
-  score: 6,
-  id: 3
 }];
 
 _reactDom.default.render(_react.default.createElement(_Scoreboard.default, {

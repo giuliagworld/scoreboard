@@ -6,7 +6,7 @@ import Header from './Header';
 import Player from './Player';
 import AddPlayer from './AddPlayer';
 
-let nextId = 4;
+let nextId = 2;
 
 const Scoreboard = createReactClass({
   propTypes: {
