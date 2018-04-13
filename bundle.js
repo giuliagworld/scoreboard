@@ -20673,17 +20673,21 @@ var AddPlayer = (0, _createReactClass.default)({
   },
   render: function render() {
     return _react.default.createElement("div", {
-      className: "add-player-form"
+      className: "add-player"
     }, _react.default.createElement("form", {
+      className: "form",
       onSubmit: this.onSubmit
     }, _react.default.createElement("input", {
       type: "text",
+      className: "input",
       value: this.state.name,
       onChange: this.onNameChange
-    }), _react.default.createElement("input", {
+    }), _react.default.createElement("button", {
       type: "submit",
-      value: "Add Player"
-    })));
+      className: "btn"
+    }, "Add Player")), _react.default.createElement("p", null, "Click on ", _react.default.createElement("span", {
+      className: "remove-player"
+    }, "x"), " to remove that player"));
   }
 });
 var _default = AddPlayer;
@@ -20772,7 +20776,9 @@ Header.propTypes = {
 function Header(props) {
   return _react.default.createElement("div", {
     className: "header"
-  }, _react.default.createElement("h1", null, props.title));
+  }, _react.default.createElement("h1", {
+    className: "h1"
+  }, props.title));
 }
 
 var _default = Header;
@@ -20820,7 +20826,7 @@ function Player(props) {
   }, _react.default.createElement("a", {
     className: "remove-player",
     onClick: props.onRemove
-  }, "X"), props.name), _react.default.createElement("div", {
+  }, "x"), props.name), _react.default.createElement("div", {
     className: "player-score"
   }, _react.default.createElement(_Counter.default, {
     score: props.score,
@@ -20896,13 +20902,17 @@ var Scoreboard = (0, _createReactClass.default)({
   },
   // add player to state using the name argument that refers to the name coming from onSubmit
   onPlayerAdd: function onPlayerAdd(name) {
-    this.state.players.push({
-      name: name,
-      score: 0,
-      id: nextId
-    });
-    this.setState(this.state);
-    nextId += 1;
+    if (name) {
+      this.state.players.push({
+        name: name,
+        score: 0,
+        id: nextId
+      });
+      this.setState(this.state);
+      nextId += 1;
+    } else {
+      alert('Hey! Enter your name!');
+    }
   },
   onRemovePlayer: function onRemovePlayer(index) {
     this.state.players.splice(index, 1);

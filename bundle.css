@@ -1,33 +1,43 @@
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: black; }
 
 .scoreboard {
-  text-align: center;
-  color: #430078;
-  font-weight: 700; }
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: black; }
+  .scoreboard .h1 {
+    margin: 0;
+    padding: 25px 0;
+    text-align: center;
+    color: #ff7f00; }
+  @media (min-width: 768px) {
+    .scoreboard {
+      width: 500px;
+      margin: 0 auto; } }
 
-.players {
-  font-size: 20px; }
-  .players .player {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: black;
-    color: white; }
-    @media (min-width: 768px) {
-      .players .player {
-        width: 500px;
-        margin: 0 auto; } }
-    .players .player .remove-player {
-      padding-right: 10px;
-      font-size: 16px;
-      color: red;
-      cursor: pointer; }
-    .players .player .player-name {
-      padding-left: 10px;
-      text-align: left; }
+.players .player {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  background-color: black;
+  color: white; }
+  @media (min-width: 768px) {
+    .players .player {
+      width: 500px;
+      margin: 0 auto; } }
+  .players .player .remove-player {
+    padding-right: 20px;
+    color: red;
+    cursor: pointer; }
+  .players .player .player-name {
+    padding-left: 20px;
+    text-align: left; }
 
 .counter {
   display: flex;
@@ -51,5 +61,44 @@ body {
         background-color: #00b33c; }
   .counter .counter-score {
     padding-right: 25px; }
+
+.add-player {
+  margin: 25px 0; }
+  .add-player .form {
+    padding: 10px;
+    background-color: black; }
+    .add-player .form .input {
+      width: calc(100% - 20px);
+      margin: 0 auto;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      font-size: 16px; }
+      @media (min-width: 768px) {
+        .add-player .form .input {
+          width: 60%; } }
+    .add-player .form .btn {
+      width: 100%;
+      margin: 10px auto 0;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      background-color: #ff7f00;
+      color: white;
+      font-size: 16px;
+      cursor: pointer; }
+      @media (min-width: 768px) {
+        .add-player .form .btn {
+          width: calc(40% - 25px);
+          margin-top: 0;
+          margin-left: 5px; } }
+  .add-player p {
+    text-align: center;
+    font-size: 16px;
+    color: white; }
+    .add-player p span {
+      color: red; }
 
 /*# sourceMappingURL=bundle.css.map*/
