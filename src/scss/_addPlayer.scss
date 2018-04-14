@@ -1,0 +1,45 @@
+.add-player {
+  margin: 25px 0;
+  .form {
+    padding: 10px;
+    background-color: $black;
+    .input {
+      width: calc(100% - 20px);
+      margin: 0 auto;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      font-size: 16px;
+      @include breakpoint('md') {
+        width: 60%;
+      }
+    }
+    .btn {
+      width: 100%;
+      margin: 10px auto 0;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      outline: none;
+      background-color: $orange;
+      color: $white;
+      font-size: 16px;
+      cursor: pointer;
+      @include breakpoint('md') {
+        width: calc(40% - 25px);
+        margin-top: 0;
+        margin-left: 5px;
+      }
+    }
+  }
+  .info {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 16px;
+    color: $white;
+    .remove-player {
+      color: $red;
+    }
+  }
+}

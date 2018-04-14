@@ -1,0 +1,23 @@
+  .player {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
+    background-color: $black;
+    color: $white;
+    @include breakpoint('md') {
+      width: 500px;
+      margin: 0 auto;
+    }
+    .remove-player {
+      padding-right: 20px;
+      color: $red;
+      cursor: pointer;
+    }
+    .player-name {
+      padding-left: 20px;
+      text-align: left;
+    }
+  }
