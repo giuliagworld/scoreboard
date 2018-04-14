@@ -18,7 +18,7 @@ body {
       width: 500px;
       margin: 0 auto; } }
 
-.players .player {
+.player {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -28,20 +28,16 @@ body {
   background-color: black;
   color: white; }
   @media (min-width: 768px) {
-    .players .player {
+    .player {
       width: 500px;
       margin: 0 auto; } }
-  .players .player .remove-player {
+  .player .remove-player {
     padding-right: 20px;
     color: red;
     cursor: pointer; }
-  .players .player .player-name {
+  .player .player-name {
     padding-left: 20px;
     text-align: left; }
-
-.players .error-text {
-  text-align: center;
-  color: red; }
 
 .counter {
   display: flex;
