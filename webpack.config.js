@@ -19,10 +19,14 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [{
             // translates CSS into CommonJS
-            loader: "css-loader"
+            loader: "css-loader", options: {
+              sourceMap: true
+            }
           }, {
             // compiles Sass to CSS
-            loader: "sass-loader"
+              loader: "sass-loader", options: {
+                sourceMap: true
+              }
           }],
           // creates style nodes from JS strings
           // use style-loader in development

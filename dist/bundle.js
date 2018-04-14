@@ -20904,6 +20904,8 @@ var Scoreboard = (0, _createReactClass.default)({
     if (this.state.players[index].score >= 0) {
       this.setState(this.state);
     } else {
+      this.state.players[index].score = 0;
+      this.setState(this.state);
       alert("Really? You can't go lower than zero!");
     }
   },
