@@ -39,12 +39,15 @@ body {
     padding-left: 20px;
     text-align: left; }
 
+.players .error-text {
+  text-align: center;
+  color: red; }
+
 .counter {
   display: flex;
   align-items: center; }
   .counter .counter-action {
-    width: 50px;
-    height: 50px;
+    padding: 15px 20px;
     font-size: 25px;
     background-color: black;
     color: white;
@@ -55,10 +58,14 @@ body {
       background-color: red; }
       .counter .counter-action.decrement:hover {
         background-color: #ff4d4d; }
+      .counter .counter-action.decrement:focus {
+        background-color: red; }
     .counter .counter-action.increment {
       background-color: #009933; }
       .counter .counter-action.increment:hover {
         background-color: #00b33c; }
+      .counter .counter-action.increment:focus {
+        background-color: #009933; }
   .counter .counter-score {
     padding-right: 25px; }
 

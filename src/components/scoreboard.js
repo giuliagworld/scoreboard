@@ -36,7 +36,12 @@ const Scoreboard = createReactClass({
     // above not enough
     // below indicates to react that the state has change and it should be re-rendered
     // setState is a React function to change the state
-    this.setState(this.state);
+    if (this.state.players[index].score >= 0) {
+      this.setState(this.state);
+    }
+    else {
+      alert("Really? You can't go lower than zero!");
+    }
   },
   // add player to state using the name argument that refers to the name coming from onSubmit
   onPlayerAdd: function(name) {
