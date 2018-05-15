@@ -1,37 +1,22 @@
-import React from 'react';
-import createReactClass from "create-react-class";
-import PropTypes from 'prop-types';
-
+import React, { Component } from 'react';
 import Header from './Header';
 import Player from './Player';
 import AddPlayer from './AddPlayer';
 
 let nextId = 1;
 
-const Scoreboard = createReactClass({
-  propTypes: {
-    title: PropTypes.string,
-    initialPlayers: PropTypes.arrayOf(PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      score: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired
-    })).isRequired
-  },
-  // getDefaultProps is a React function
-  getDefaultProps: function() {
-    return {
-      title: 'Scoreboard'
-    }
-  },
-  // getInitialState is a React function to render the state
-  // change {this.props.score} to {this.state.score} because we are no longer taking the value from props but from state
-  getInitialState: function() {
-    return {
-      players: this.props.initialPlayers
-    }
-  },
+export default class Scoreboard extends Component {
+
+  static defaultProps = {
+    title: 'Scoreboard'
+  }
+
+  state = {
+    players: this.props.initialPlayers
+  }
+
   // passing the index of the PLAYERS array and the delta is the number by which we should change the score
-  onScoreChange: function(index, delta) {
+  onScoreChange = (index, delta) => {
     this.state.players[index].score += delta;
     // above not enough
     // below indicates to react that the state has change and it should be re-rendered
@@ -44,9 +29,9 @@ const Scoreboard = createReactClass({
       this.setState(this.state);
       alert("Really? You can't go lower than zero!");
     }
-  },
+  }
   // add player to state using the name argument that refers to the name coming from onSubmit
-  onPlayerAdd: function(name) {
+  onPlayerAdd = (name) => {
     if (name) {
       this.state.players.push({
         name: name,
@@ -59,12 +44,12 @@ const Scoreboard = createReactClass({
     else {
       alert('Hey! Enter your name!');
     }
-  },
-  onRemovePlayer: function(index) {
+  }
+  onRemovePlayer = (index) => {
     this.state.players.splice(index, 1)
     this.setState(this.state)
-  },
-  render: function() {
+  }
+  render() {
     return (
       <div className="scoreboard">
         <Header title={this.props.title} />
@@ -87,6 +72,5 @@ const Scoreboard = createReactClass({
       </div>
     )
   }
-})
+}
 
-export default Scoreboard;

@@ -1,13 +1,6 @@
 import React from 'react';
-import createReactClass from "create-react-class";
-import PropTypes from 'prop-types';
 
-Counter.propTypes = {
-  score: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired
-}
-
-function Counter(props) {
+const Counter = props => {
   return (
     <div className="counter">
       <div className="counter-score"> {props.score} </div>
@@ -17,4 +10,4 @@ function Counter(props) {
   )
 }
 
-export default Counter;
+export default Counter

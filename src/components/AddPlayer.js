@@ -1,23 +1,19 @@
-import React from 'react';
-import createReactClass from "create-react-class";
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-const AddPlayer = createReactClass({
-  propTypes: {
-    onAdd: PropTypes.func.isRequired
-  },
-  getInitialState: function() {
-    return {
+export default class AddPlayer extends Component {
+
+  state = {
       name: ''
-    }
-  },
-  onNameChange: function(e) {
+  }
+
+  onNameChange = (e) => {
     // update the state every time a letter is typed
     this.setState({
       name: e.target.value
     });
-  },
-  onSubmit: function(e) {
+  }
+
+  onSubmit = (e) => {
     // prevent the form from submitting
     e.preventDefault();
     // passing the name up the DOM tree
@@ -27,8 +23,9 @@ const AddPlayer = createReactClass({
     this.setState({
       name: ''
     })
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div className="add-player">
         <form className="form" onSubmit={this.onSubmit}>
@@ -39,6 +36,4 @@ const AddPlayer = createReactClass({
       </div>
     )
   }
-})
-
-export default AddPlayer;
+}
