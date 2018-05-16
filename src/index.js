@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Scoreboard from './components/Scoreboard';
+import App from './app';
 
-let PLAYERS = [];
+// let PLAYERS = [];
 
-ReactDOM.render(<Scoreboard initialPlayers={PLAYERS} />, document.getElementById('app'));
+// ReactDOM.render(<App initialPlayers={PLAYERS} />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

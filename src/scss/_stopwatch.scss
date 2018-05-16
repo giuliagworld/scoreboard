@@ -1,0 +1,12 @@
+.stopwatch {
+  float: right;
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: $white;
+  text-align: center;
+  .h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+}

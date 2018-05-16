@@ -1,0 +1,9 @@
+.stats {
+  float: left;
+  width: 180px;
+  padding: 10px;
+  color: $white;
+  .value {
+    text-align: right;
+  }
+}

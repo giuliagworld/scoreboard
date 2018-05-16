@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Player from './Player';
-import AddPlayer from './AddPlayer';
+import Header from './components/Header';
+import Player from './components/Player';
+import AddPlayer from './components/AddPlayer';
 
 let nextId = 1;
 
-export default class Scoreboard extends Component {
+export default class App extends Component {
 
   static defaultProps = {
     title: 'Scoreboard'
   }
 
+  // state = {
+  //   players: this.props.initialPlayers
+  // }
   state = {
-    players: this.props.initialPlayers
-  }
+    players: [
+      {
+        name: 'Jim Hoskins',
+        score: 31,
+      },
+      {
+        name: 'Andrew Chalkley',
+        score: 20,
+      },
+      {
+        name: 'Alena Holligan',
+        score: 50,
+      },
+    ]
+  };
 
   // passing the index of the PLAYERS array and the delta is the number by which we should change the score
   onScoreChange = (index, delta) => {
@@ -30,6 +46,7 @@ export default class Scoreboard extends Component {
       alert("Really? You can't go lower than zero!");
     }
   }
+
   // add player to state using the name argument that refers to the name coming from onSubmit
   onPlayerAdd = (name) => {
     if (name) {
@@ -45,14 +62,16 @@ export default class Scoreboard extends Component {
       alert('Hey! Enter your name!');
     }
   }
+
   onRemovePlayer = (index) => {
     this.state.players.splice(index, 1)
     this.setState(this.state)
   }
+
   render() {
     return (
-      <div className="scoreboard">
-        <Header title={this.props.title} />
+      <div className="app">
+        <Header title={this.props.title} players={this.state.players} />
           <div className="players">
             {this.state.players.map(function(player, index) {
               return (
