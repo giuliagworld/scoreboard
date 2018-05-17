@@ -3,18 +3,18 @@ body {
   padding: 0;
   background-color: black; }
 
-.scoreboard {
+.app {
   width: 100%;
   font-size: 20px;
   font-weight: 700;
   background-color: black; }
-  .scoreboard .h1 {
+  .app .h1 {
     margin: 0;
     padding: 25px 0;
     text-align: center;
     color: #ff7f00; }
   @media (min-width: 768px) {
-    .scoreboard {
+    .app {
       width: 500px;
       margin: 0 auto; } }
 
@@ -104,5 +104,24 @@ body {
     color: white; }
     .add-player .info .remove-player {
       color: red; }
+
+.stats {
+  float: left;
+  width: 180px;
+  padding: 10px;
+  color: white; }
+  .stats .value {
+    text-align: right; }
+
+.stopwatch {
+  float: right;
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center; }
+  .stopwatch .h2 {
+    margin: 0;
+    font-size: 20px; }
 
 /*# sourceMappingURL=bundle.css.map*/
