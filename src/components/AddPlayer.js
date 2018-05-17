@@ -13,12 +13,12 @@ export default class AddPlayer extends Component {
     });
   }
 
-  onSubmit = (e) => {
+  addPlayer = (e) => {
     // prevent the form from submitting
     e.preventDefault();
     // passing the name up the DOM tree
     // onAdd take a name to pass up
-    this.props.onAdd(this.state.name)
+    this.props.addPlayer(this.state.name)
     // clear that last name from the state
     this.setState({
       name: ''
@@ -28,7 +28,7 @@ export default class AddPlayer extends Component {
   render() {
     return (
       <div className="add-player">
-        <form className="form" onSubmit={this.onSubmit}>
+        <form className="form" onSubmit={this.addPlayer}>
           <input type="text" className="input" placeholder="Player Name" value={this.state.name} onChange={this.onNameChange} />
           <button type="submit" className="btn">Add Player</button>
         </form>

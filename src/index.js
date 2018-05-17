@@ -1,9 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import PlayerReducer from './reducers/player';
 import App from './app';
 
-// let PLAYERS = [];
+const store = createStore(
+  PlayerReducer,
+  window.devToolsExtension && window.devToolsExtension()
+);
 
-// ReactDOM.render(<App initialPlayers={PLAYERS} />, document.getElementById('app'));
-ReactDOM.render(<App />, document.getElementById('app'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+);
